@@ -32,9 +32,7 @@ class Explore extends Component {
       })
 
     componentWillMount() {
-
         this.scrollY = new Animated.Value(0)
-
         this.startHeaderHeight = 80
         this.endHeaderHeight = 50
         if (Platform.OS == 'android') {
@@ -63,8 +61,6 @@ class Explore extends Component {
             outputRange: [50, 30],
             extrapolate: 'clamp'
         })
-
-
     }
 //   getlocation(){
 //     Geocoder.init('AIzaSyC_wTdzP2bemmfisozmTxKrExtgXTkOApw');
@@ -203,7 +199,7 @@ class Explore extends Component {
             </View>
         );
     }
-}
+    }
 export default Explore;
 
 const styles = StyleSheet.create({
