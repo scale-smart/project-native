@@ -184,16 +184,16 @@ class Explore extends Component {
                                     price={82}
                                     rating={4}
                                 />
-                                 <TouchableOpacity onPress={() => this.props.navigation.navigate("explore_view",{
-
-                                    })}>
+                                 
                                 <Home width={width}
                                     name="The Cozy Place"
                                     type="PRIVATE ROOM - 2 BEDS"
                                     price={82}
                                     rating={4}
+                                    imageUri={require('../../assets/home.jpg')}
+                                    navtoview = {this.navToView}
                                 />
-                                </TouchableOpacity>
+
 
                             </View>
                         </View>
