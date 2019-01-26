@@ -14,6 +14,7 @@ import {
     TouchableOpacity
 } from "react-native";
 import Geocoder from 'react-native-geocoding';
+import * as anim from './Helpers/Animations.js'
 import Icon from 'react-native-vector-icons/Ionicons'
 import Category from '../components/Explore/Category'
 import Home from '../components/Explore/Home'
@@ -33,38 +34,6 @@ class Explore extends Component {
 
     componentWillMount() {
 
-        this.scrollY = new Animated.Value(0)
-
-        this.startHeaderHeight = 80
-        this.endHeaderHeight = 50
-        if (Platform.OS == 'android') {
-            this.startHeaderHeight = 100 + StatusBar.currentHeight
-            this.endHeaderHeight = 70 + StatusBar.currentHeight
-        }
-
-        this.animatedHeaderHeight = this.scrollY.interpolate({
-            inputRange: [0, 50],
-            outputRange: [this.startHeaderHeight, this.endHeaderHeight],
-            extrapolate: 'clamp'
-        })
-
-        this.animatedOpacity = this.animatedHeaderHeight.interpolate({
-            inputRange: [this.endHeaderHeight, this.startHeaderHeight],
-            outputRange: [0, 1],
-            extrapolate: 'clamp'
-        })
-        this.animatedTagTop = this.animatedHeaderHeight.interpolate({
-            inputRange: [this.endHeaderHeight, this.startHeaderHeight],
-            outputRange: [-30, 10],
-            extrapolate: 'clamp'
-        })
-        this.animatedMarginTop = this.animatedHeaderHeight.interpolate({
-            inputRange: [this.endHeaderHeight, this.startHeaderHeight],
-            outputRange: [50, 30],
-            extrapolate: 'clamp'
-        })
-
-
     }
 //   getlocation(){
 //     Geocoder.init('AIzaSyC_wTdzP2bemmfisozmTxKrExtgXTkOApw');
@@ -81,7 +50,7 @@ class Explore extends Component {
         return (
             <View style={{ flex: 1 ,backgroundColor:"blue"}}>
                 <View style={{ flex: 1 }}>
-                    <Animated.View style={{ height: this.animatedHeaderHeight, backgroundColor: 'yellow', borderBottomWidth: 1, borderBottomColor: '#dddddd' }}>
+                    <Animated.View style={{ height: anim.animatedHeaderHeight, backgroundColor: 'yellow', borderBottomWidth: 1, borderBottomColor: '#dddddd' }}>
                         <View style={{
                             flexDirection: 'row', padding: 10,
                             backgroundColor: 'black', marginHorizontal: 20,
@@ -103,7 +72,7 @@ class Explore extends Component {
                             </TouchableOpacity> */}
                         </View>
                         <Animated.View
-                            style={{ flexDirection: 'row', marginHorizontal: 20, position: 'relative', top: this.animatedTagTop, opacity: this.animatedOpacity }}
+                            style={{ flexDirection: 'row', marginHorizontal: 20, position: 'relative', top: anim.animatedTagTop, opacity: anim.animatedOpacity }}
                         >
                             <Tag name="Guests" />
                             <Tag name="Dates" />
@@ -114,7 +83,7 @@ class Explore extends Component {
                         scrollEventThrottle={16}
                         onScroll={Animated.event(
                             [
-                                { nativeEvent: { contentOffset: { y: this.scrollY } } }
+                                { nativeEvent: { contentOffset: { y: anim.scrollY } } }
                             ]
                         )}
                     >
