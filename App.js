@@ -8,7 +8,7 @@ import Explore_location from './screens/Explore/Location.js'
 import Saved from './screens/Saved'
 import Inbox from './screens/Inbox'
 import Trips from './screens/Trips'
-import Profile from './screens/Profile'
+import ProfileStack from './screens/Profile'
  const exploreStack = createStackNavigator({
    explore_home : Explore,
    explore_view : Explore_view,
@@ -40,7 +40,7 @@ const tabnav = createBottomTabNavigator({
     Saved:Saved,
     Inbox:Inbox,
     Trips:Trips,
-    Profile:Profile
+    Profile:ProfileStack
 },{
   tabBarOptions: {
     activeTintColor: '#ff8c1a',

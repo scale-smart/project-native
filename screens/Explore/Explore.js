@@ -27,6 +27,7 @@ class Explore extends Component {
           },
       })
 
+    
     navToView = (props) => (this.props.navigation.navigate("explore_view",props))
 
     navToLoc = (props) => (this.props.navigation.navigate("explore_location",props))
@@ -78,7 +79,7 @@ class Explore extends Component {
             </View>
         );
     }
-}
+    }
 export default Explore;
 
 const styles = StyleSheet.create({
