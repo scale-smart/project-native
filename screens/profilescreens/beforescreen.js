@@ -12,25 +12,27 @@ import Icon from 'react-native-vector-icons/Ionicons'
 export default class Profile extends React.Component {
 
     static navigationOptions = ({navigation}) => ({
-      tabBarLabel: 'INBOX',
-      tabBarIcon: ({ tintColor }) => (
-        <Icon name="ios-person" color={tintColor} size={24} />
-      )
-    })
+        header:null,
+        headerStyle: {
+            backgroundColor: 'black',
+            marginTop:-25,
+            marginHorizontal:20
+          },
+      })
 
   render (){
   return(
     <View style={styles.container}>
          
           <Text style={{fontSize:15,marginTop:80}}> HI! your are not yet logged in</Text>
-          <TouchableOpacity style={[styles.customBtnBG,{marginTop:30}]}>            
+          <TouchableOpacity style={[styles.customBtnBG,{marginTop:30}]} onPress={() => this.props.navigation.navigate("explore_view")} >            
              <Text style={styles.customBtnText}>LOGIN ! </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.customBtnBG,{marginTop:10}]}>      
+          <TouchableOpacity style={[styles.customBtnBG,{marginTop:10}]} onPress={() => this.props.navigation.navigate("explore_view")} >      
           <Text style={styles.customBtnText}>SIGNUP ! </Text>
           </TouchableOpacity>
           <Image style={{marginTop:40,}}
-           source={require('../assets/shark.jpg')}/>
+           source={require('../../assets/shark.jpg')}/>
       </View>
   )
 }
