@@ -4,13 +4,15 @@ import { createBottomTabNavigator,createStackNavigator,createAppContainer } from
 import Icon from 'react-native-vector-icons/Ionicons'
 import Explore from './screens/Explore/Explore.js'
 import Explore_view from './screens/Explore/View.js'
+import Explore_location from './screens/Explore/Location.js'
 import Saved from './screens/Saved'
 import Inbox from './screens/Inbox'
 import Trips from './screens/Trips'
 import Profile from './screens/Profile'
  const exploreStack = createStackNavigator({
    explore_home : Explore,
-   explore_view : Explore_view
+   explore_view : Explore_view,
+   explore_location : Explore_location
  },{
    initialRouteName:"explore_home",
    //headerMode: 'none',
