@@ -12,9 +12,4 @@ export const data = [
         name:"Experiences",
         key: ++key
     },
-    {
-        imageUri : require('../../assets/home.jpg'),
-        name:"Restaurant",
-        key: ++key
-    }
 ]

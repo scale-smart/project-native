@@ -7,11 +7,12 @@ import {
   Button,
   TouchableHighlight,
   Image,ImageBackground,
-  Alert
+  Alert,TouchableOpacity
 } from 'react-native';
-import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
- 
-export default class LoginView extends Component {
+import PropTypes from 'prop-types'; 
+import Glogin from './googlebutton.js'
+import Fblogin from './facebookbutton.js'
+export default class LoginScreen extends Component {
 
   constructor(props) {
     super(props);
@@ -25,11 +26,18 @@ export default class LoginView extends Component {
     Alert.alert("Alert", "Button pressed "+viewId);
   }
 
+  redirecttoprofile = (obj)=>(
+    this.props.navigation.navigate("account_details",{
+      name:obj.name,
+      imguri:obj.picture.data.url
+    })
+  )
+
   render() {
     return (
 
       <View style={styles.container}>
-      <ImageBackground style={styles.imagebackground} source={require('./images/wallpaper.png')}>
+      {/* <ImageBackground style={styles.imagebackground} source={require('./images/wallpaper.png')}> */}
         <Text style={styles.title}>LOGIN / SIGNUP</Text>
         <View style={styles.inputContainer}>
           <Image style={styles.inputIcon} source={require('./images/mail.png')}/>
@@ -47,20 +55,27 @@ export default class LoginView extends Component {
               secureTextEntry={true}
               underlineColorAndroid='transparent'
               onChangeText={(password) => this.setState({password})}/>
-        </View>
+         </View>
          
-        <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={() => this.onClickListener('login')}>
+        <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} onPress={() => this.props.navigation.navigate("account_details")}>
           <Text style={styles.loginText}>Login</Text>
         </TouchableHighlight>
 
-        <TouchableHighlight style={styles.buttonContainer} onPress={() => this.onClickListener('restore_password')}>
-            <Text>Forgot your password?</Text>
-        </TouchableHighlight>
-
-        <TouchableHighlight style={styles.buttonContainer} onPress={() => this.onClickListener('register')}>
-            <Text>Register</Text>
-        </TouchableHighlight>
-        </ImageBackground>
+        <View style={styles.buttonContainer}>
+            <TouchableHighlight  onPress={() => this.onClickListener('restore_password')}>
+                <Text>Forgot your password?</Text>
+            </TouchableHighlight>
+            <TouchableHighlight  onPress={() => this.onClickListener('register')}>
+                <Text>  Register</Text>
+            </TouchableHighlight>
+        </View>
+        <View style={{marginLeft:125}}>
+          <Glogin/>
+        </View>
+        <View>
+          <Fblogin rtop={this.redirecttoprofile}/>
+        </View>
+        {/* </ImageBackground> */}
       </View>
     );
   }
@@ -69,8 +84,8 @@ export default class LoginView extends Component {
 const styles = StyleSheet.create({
   title:{
     marginTop:40,
-    marginHorizontal:120,
-    marginBottom:40,
+    marginLeft:135,
+    marginBottom:25,
     flexDirection: 'row',
     fontWeight:'bold',
     fontSize:15
@@ -81,7 +96,7 @@ const styles = StyleSheet.create({
     //justifyContent: 'center',
     //alignItems: 'center',
     
-    backgroundColor: '#DCDCDC',
+    backgroundColor: '#fff',
   },
   imagebackground:{
     flex: 1,
@@ -89,13 +104,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   inputContainer: {
-      borderBottomColor: '#F5FCFF',
+      borderColor: '#ff8c1a',
       backgroundColor: '#FFFFFF',
       borderRadius:30,
       borderBottomWidth: 1,
       width:300,
       height:45,
-      marginBottom:20,
+      marginBottom:10,
       marginHorizontal:35,
       flexDirection: 'row',
       alignItems:'center'
@@ -103,7 +118,7 @@ const styles = StyleSheet.create({
   inputs:{
       height:45,
       marginLeft:16,
-      borderBottomColor: '#FFFFFF',
+      borderBottomColor: '#ff8c1a',
       flex:1,
   },
   inputIcon:{
@@ -117,10 +132,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom:15,
-    marginHorizontal:110,
-    width:150,
+    marginBottom:10,
+    marginTop:5,
+    marginHorizontal:80,
+    width:200,
     borderRadius:30,
+    
   },
   loginButton: {
     backgroundColor: "#00b5ec",
