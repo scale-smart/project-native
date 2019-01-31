@@ -5,8 +5,12 @@ import {
     StyleSheet,
     Image,
     TouchableOpacity,
-    Animated,ScrollView
+    Animated,ScrollView,
+    WebView
+    
 } from "react-native";
+import {Video} from "expo"
+import VideoPlayer from './videoplayer.js';
 import Icon from 'react-native-vector-icons/Ionicons'
 import {Header} from 'react-navigation'
 import HeaderImageScrollView, { TriggeringView } from 'react-native-image-header-scroll-view';
@@ -25,11 +29,55 @@ class Explore_view extends Component {
         const data = Array.from({length: 30});
         return (
           <View style={styles.scrollViewContent}>
-            {data.map((_, i) =>
-              <View key={i} style={styles.row}>
-                <Text>{i}</Text>
-              </View>
-            )}
+          <ScrollView
+          horizontal={true}
+          >
+           <View style={{margin:10}}>
+            <VideoPlayer
+                    videoProps={{
+                        shouldPlay: false,
+                        resizeMode: Video.RESIZE_MODE_CONTAIN,
+                        source: require('../../assets/video2.mp4'),
+                        posterSource:require('../../assets/im1.jpg'),
+                        usePoster:true
+                        
+                    }}
+                    isPortrait={true}
+                    playFromPositionMillis={0}
+            />
+            </View>
+            <View style={{margin:10}}>
+           <VideoPlayer
+                    videoProps={{
+                        shouldPlay: false,
+                        resizeMode: Video.RESIZE_MODE_CONTAIN,
+                        source: require('../../assets/video2.mp4'),
+                        posterSource:require('../../assets/im2.jpg'),
+                        usePoster:true
+                        
+                    }}
+                    isPortrait={true}
+                    playFromPositionMillis={0}
+            />
+            </View>
+            <View style={{margin:10}}>
+           <VideoPlayer
+                    videoProps={{
+                        shouldPlay: false,
+                        resizeMode: Video.RESIZE_MODE_CONTAIN,
+                        source: require('../../assets/video1.mp4'),
+                        posterSource:require('../../assets/home.jpg'),
+                        usePoster:true
+                        
+                    }}
+                    isPortrait={true}
+                    playFromPositionMillis={0}
+            />
+            </View>
+            </ScrollView>
+            <View>
+                
+            </View>
           </View>
         );
       }
@@ -108,46 +156,6 @@ class Explore_view extends Component {
         </View>
         )
 
-
-        return(
-            <View>
-            <View>
-            <Image source={this.props.navigation.getParam('imageUri')} style={{height:230,width:400,position:"absolute"}} />
-            </View>
-            <View style={{height:50,borderWidth:0,flexDirection:"row",alignItems:"center",}}>
-            <TouchableOpacity style={{marginLeft:18,height:30,width:30}} onPress={() => this.props.navigation.navigate("explore_home")} >
-                <Icon name="ios-arrow-back" color="white" size={30} />
-            </TouchableOpacity>
-            <TouchableOpacity style={{marginLeft:200}} >
-                <Icon name="ios-arrow-back" color="red" size={24} />
-            </TouchableOpacity>
-            </View>
-            </View>
-        )
-        return (
-            
-            <HeaderImageScrollView
-              maxHeight={200}
-              minHeight={0}
-              headerImage={require('../../assets/im1.jpg')}
-            >
-              <View style={{ height: 1000 }}>
-                <TriggeringView onHide={() => console.log('text hidden')} >
-                  <Text>Scroll Me!</Text>
-                </TriggeringView>
-              </View>
-            </HeaderImageScrollView>
-            
-
-          );  
-
-        return (
-            <View style={styles.container}>
-            {/* <Image style={{height:250,width:350}}source={this.props.navigation.getParam('imageUri')}/> */}
-            
-                <Text>Explore_view</Text>
-            </View>
-        );
     }
 }
 export default Explore_view;
@@ -193,7 +201,7 @@ const styles = StyleSheet.create({
         paddingLeft:40
       },
       scrollViewContent: {
-        marginTop: HEADER_MAX_HEIGHT,
+        marginTop: HEADER_MAX_HEIGHT+20,
       },
       backgroundImage: {
         position: 'absolute',

@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator,AppConatiner } from 'react-navigation'
 import beforescreen from './profilescreens/beforescreen.js'
-import LoginScreen  from './profilescreens/LoginScreen.js'
+import LoginScreen  from './profilescreens/loginscreen.js'
 import Icon from 'react-native-vector-icons/Ionicons'
 export default ProfileStack = createStackNavigator({
   explore_home : beforescreen,

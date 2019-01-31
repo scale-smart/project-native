@@ -9,7 +9,7 @@ import {
   Image,ImageBackground,
   Alert
 } from 'react-native';
-import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
+//import { GoogleSignin, GoogleSigninButton } from 'react-native-google-signin';
  
 export default class LoginView extends Component {
 

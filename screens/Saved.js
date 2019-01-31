@@ -5,6 +5,7 @@ import {
     StyleSheet
 } from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons'
+import H_Scroll from './Explore/Horizontal_Scroll.js'
 class Saved extends Component {
 
     static navigationOptions = ({navigation}) => ({
@@ -15,6 +16,7 @@ class Saved extends Component {
       })
 
     render() {
+        console.log(this.props.navigation.getParam("cat_data"))
         return (
             <View style={styles.container}>
                 <Text>Saved</Text>
