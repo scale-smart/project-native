@@ -15,6 +15,7 @@ export let data = [
         liked:false,
         key: ++key
     },
+
     {
         imageUri : require('../../assets/home.jpg'),
         name:"Restaurant",
@@ -22,4 +23,6 @@ export let data = [
         key: ++key
     }
 ]
+
+
 

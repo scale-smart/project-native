@@ -44,14 +44,14 @@ const tabnav = createBottomTabNavigator({
 },{
   tabBarOptions: {
     activeTintColor: '#ff8c1a',
-    inactiveTintColor: '#b35900',
+    inactiveTintColor: '#8c8c8c',
     style: {
       backgroundColor: 'white',
       borderTopWidth: 0,
       shadowOffset: { width: 5, height: 3 },
       shadowColor: 'black',
       shadowOpacity: 0.5,
-      elevation: 50
+      //elevation: 50
     }
   }})
 const AppContainer = createAppContainer(tabnav)
